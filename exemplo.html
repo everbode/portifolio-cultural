@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Exemplo de Portfólio Cultural | Sobrinho Soluções Digitais</title>
+<style>
+:root{--bg:#f5f3ee;--card:#fff;--ink:#20221f;--muted:#696d67;--accent:#7b2f35;--accent2:#b48a4a;--line:#ded8cf}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.top{background:#171a18;color:white;border-bottom:4px solid var(--accent2);padding:14px 18px}.topin{max-width:850px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}.top b{font-size:14px}.top span{font-size:11px;color:#d7dbd7}
+.actions{max-width:850px;margin:18px auto 0;padding:0 10px;display:flex;justify-content:flex-end}.btn{border:0;border-radius:10px;padding:10px 13px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+.portfolio{max-width:850px;margin:18px auto 40px;background:#fff;border:1px solid #e6e0d8;box-shadow:0 12px 34px rgba(0,0,0,.08)}
+.cover{padding:64px 58px 52px;background:linear-gradient(135deg,#20231f,#343831);color:#fff;position:relative;overflow:hidden;min-height:430px;display:flex;flex-direction:column;justify-content:center}
+.cover:after{content:"";position:absolute;width:290px;height:290px;border:46px solid rgba(180,138,74,.18);border-radius:50%;right:-90px;top:-85px}.cover:before{content:"";position:absolute;width:120px;height:120px;border:20px solid rgba(123,47,53,.34);border-radius:50%;left:-40px;bottom:-35px}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#d9bd8d}.cover h1{font-size:44px;line-height:1.04;margin:15px 0 10px;max-width:640px;position:relative;z-index:1}.cover p{max-width:610px;color:#e6e8e4;margin:0;line-height:1.6;position:relative;z-index:1}.meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;font-size:12px;color:#d9ded9;position:relative;z-index:1}
+.demo{display:inline-block;margin-top:20px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 9px;border:1px solid rgba(255,255,255,.28);border-radius:999px;width:max-content;position:relative;z-index:1}
+.doc{padding:44px 58px}.doc h2{font-size:21px;border-bottom:2px solid var(--accent2);padding-bottom:8px;margin:34px 0 16px}.doc h2:first-child{margin-top:0}.doc p{line-height:1.67}
+.identity{display:grid;grid-template-columns:125px 1fr;gap:20px;align-items:start}.avatar{width:125px;height:125px;border-radius:16px;border:1px solid #ddd;background:
+radial-gradient(circle at 50% 30%,#d6aa83 0 15%,transparent 16%),
+radial-gradient(circle at 50% 53%,#8a5038 0 22%,transparent 23%),
+linear-gradient(145deg,#d9bd8d,#7b2f35)}
+.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{font-size:11px;padding:6px 8px;border-radius:999px;background:#f1ede5;border:1px solid #e1dacd}
+.timeline{border-left:2px solid #c3a26c;margin-left:7px;padding-left:18px}.event{margin:0 0 20px;position:relative}.event:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);position:absolute;left:-24px;top:6px}.event b{display:block}.event small{color:#6f736c}.event p{margin:5px 0 0}
+.project-card{border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0;background:#fdfcf9}.project-card h3{margin:0 0 4px;font-size:17px}.project-meta{font-size:11px;color:#7c7161;margin-bottom:8px}
+.proofs li{margin:9px 0;line-height:1.45}.proof-tag{font-size:10px;padding:3px 6px;border-radius:999px;background:#f1ede5;border:1px solid #e1dacd;margin-left:5px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.shot{aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:1px solid #ddd;position:relative}.shot:nth-child(1){background:linear-gradient(135deg,#876344,#e2a86f 46%,#384739)}.shot:nth-child(2){background:linear-gradient(155deg,#233328,#b88955 45%,#8b343b)}.shot:nth-child(3){background:linear-gradient(125deg,#d5bd97,#556750 50%,#402d2c)}.shot:nth-child(4){background:linear-gradient(135deg,#572f35,#d6b179 45%,#3c4a42)}.shot:nth-child(5){background:linear-gradient(145deg,#29433c,#9e7651 50%,#d9c7a7)}.shot:nth-child(6){background:linear-gradient(120deg,#c9a46b,#7e383f 48%,#30362f)}.shot:after{content:attr(data-label);position:absolute;left:8px;right:8px;bottom:8px;background:rgba(20,20,20,.66);color:#fff;font-size:9px;padding:5px 6px;border-radius:6px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:10px}.contact div{border:1px solid var(--line);border-radius:10px;padding:12px}.contact small{display:block;color:var(--muted);margin-bottom:3px}
+.footer-note{padding:16px 58px 28px;color:#777;font-size:10px;border-top:1px solid #eee}
+@media(max-width:700px){.cover,.doc{padding-left:25px;padding-right:25px}.cover h1{font-size:34px}.identity{grid-template-columns:90px 1fr}.avatar{width:90px;height:90px}.gallery{grid-template-columns:repeat(2,1fr)}.contact{grid-template-columns:1fr}.topin{align-items:flex-start;flex-direction:column}.portfolio{margin-top:10px}}
+@media print{body{background:#fff}.top,.actions{display:none}.portfolio{border:0;box-shadow:none;margin:0;max-width:none}.cover{min-height:100vh;break-after:page}.project-card,.event,.shot{break-inside:avoid}.footer-note{display:none}}
+</style>
+</head>
+<body>
+<div class="top"><div class="topin"><div><b>Sobrinho Soluções Digitais</b><br><span>Gerador de Portfólio Cultural</span></div><span>EXEMPLO DEMONSTRATIVO • DADOS FICTÍCIOS</span></div></div>
+<div class="actions"><button class="btn" onclick="window.print()">Gerar PDF / Imprimir</button></div>
+
+<article class="portfolio">
+<section class="cover">
+<div class="kicker">Portfólio Cultural • Três Lagoas/MS</div>
+<h1>Ana Clara do Cerrado</h1>
+<p>Artista visual e arte-educadora dedicada à pintura mural, memória comunitária e valorização das expressões culturais do Cerrado sul-mato-grossense.</p>
+<div class="meta"><span>Artes Visuais</span><span>Cultura Popular</span><span>Três Lagoas/MS</span><span>Atuação desde 2021</span></div>
+<div class="demo">Exemplo fictício gerado para demonstração</div>
+</section>
+
+<div class="doc">
+<section class="identity">
+<div class="avatar" aria-label="Foto demonstrativa"></div>
+<div>
+<h2 style="margin-top:0">Perfil cultural</h2>
+<p><b>Ana Clara Ferreira</b></p>
+<div class="chips"><span class="chip">Artista visual</span><span class="chip">Arte-educação</span><span class="chip">Muralismo</span><span class="chip">Cultura local</span></div>
+<p>Desenvolve ações culturais em bairros, escolas e espaços comunitários de Três Lagoas, com foco em oficinas gratuitas, produção de murais colaborativos e atividades de memória afetiva do território. Sua pesquisa artística utiliza cores, formas e elementos inspirados no Cerrado e nas histórias de moradores da cidade.</p>
+</div>
+</section>
+
+<section>
+<h2>Trajetória artística e cultural</h2>
+<p>Ana Clara iniciou sua atuação cultural em Três Lagoas em 2021, participando de ações comunitárias e oficinas independentes. A partir de 2022 passou a desenvolver projetos autorais que combinam artes visuais, educação e participação popular. Desde então, realizou oficinas, exposições coletivas e intervenções urbanas em parceria com espaços culturais e grupos locais.</p>
+<div class="timeline">
+<div class="event"><b>2021 — Início da atuação cultural em Três Lagoas</b><small>Artes visuais e ações comunitárias</small><p>Participação em oficinas abertas e ações de pintura coletiva em espaços comunitários.</p></div>
+<div class="event"><b>2022 — Projeto Cores do Cerrado</b><small>Projeto autoral</small><p>Primeira série de pinturas e oficinas inspiradas na fauna, flora e memória afetiva da região.</p></div>
+<div class="event"><b>2023 — Oficinas de arte para jovens</b><small>Formação cultural</small><p>Realização de encontros de introdução à pintura, composição visual e criação de murais.</p></div>
+<div class="event"><b>2024 — Mostra Memórias do Bairro</b><small>Exposição coletiva</small><p>Projeto construído a partir de relatos de moradores e registros visuais de diferentes territórios da cidade.</p></div>
+<div class="event"><b>2025–2026 — Continuidade e circulação</b><small>Três Lagoas/MS</small><p>Ampliação das oficinas, participação em eventos culturais e desenvolvimento de novas intervenções visuais.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Projetos e realizações</h2>
+<div class="project-card"><h3>Cores do Cerrado</h3><div class="project-meta">2022 • Artes Visuais • Três Lagoas/MS</div><p>Série de trabalhos visuais e oficinas que apresentam elementos da paisagem regional por meio de pintura, colagem e composição gráfica. O projeto aproximou jovens e moradores de práticas artísticas acessíveis.</p></div>
+<div class="project-card"><h3>Memórias do Bairro</h3><div class="project-meta">2024 • Memória e patrimônio cultural</div><p>Exposição colaborativa construída com relatos, fotografias e referências visuais de moradores. O trabalho buscou transformar histórias cotidianas em peças artísticas e registros de memória local.</p></div>
+<div class="project-card"><h3>Mural Coletivo — Nossa Rua, Nossa História</h3><div class="project-meta">2025 • Muralismo • Ação comunitária</div><p>Atividade coletiva de criação e pintura de mural com participação de jovens e moradores. A ação reuniu oficina introdutória, criação do desenho e execução coletiva.</p></div>
+</section>
+
+<section>
+<h2>Comprovações da trajetória</h2>
+<ol class="proofs">
+<li>Certificado de participação em oficina cultural realizada em Três Lagoas. <span class="proof-tag">Certificado</span></li>
+<li>Registro fotográfico da execução do projeto <b>Cores do Cerrado</b>. <span class="proof-tag">Fotografia</span></li>
+<li>Cartaz de divulgação da mostra <b>Memórias do Bairro</b>. <span class="proof-tag">Material de divulgação</span></li>
+<li>Publicação em rede social registrando oficina cultural aberta à comunidade. <span class="proof-tag">Registro digital</span></li>
+<li>Declaração de participação em ação cultural comunitária. <span class="proof-tag">Declaração</span></li>
+</ol>
+<p style="font-size:12px;color:#777"><b>No portfólio real:</b> cada item pode receber link, arquivo ou referência que permita à comissão verificar a comprovação.</p>
+</section>
+
+<section>
+<h2>Galeria</h2>
+<div class="gallery">
+<div class="shot" data-label="Oficina de pintura • 2023"></div>
+<div class="shot" data-label="Projeto Cores do Cerrado • 2022"></div>
+<div class="shot" data-label="Mostra Memórias do Bairro • 2024"></div>
+<div class="shot" data-label="Mural coletivo • 2025"></div>
+<div class="shot" data-label="Atividade formativa • 2025"></div>
+<div class="shot" data-label="Processo criativo • 2026"></div>
+</div>
+</section>
+
+<section>
+<h2>Contato</h2>
+<div class="contact">
+<div><small>Telefone</small><b>(67) 99999-0000</b></div>
+<div><small>E-mail</small><b>exemplo@portfolio.com.br</b></div>
+<div><small>Instagram</small><b>@anaclaradocerrado</b></div>
+<div><small>Local de atuação</small><b>Três Lagoas/MS</b></div>
+</div>
+</section>
+</div>
+
+<div class="footer-note">Portfólio demonstrativo gerado com o Gerador de Portfólio Cultural da Sobrinho Soluções Digitais. Todos os nomes, contatos, projetos e comprovações apresentados nesta página são fictícios e servem apenas para demonstrar o resultado visual do gerador.</div>
+</article>
+</body>
+</html>
