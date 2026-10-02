@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Gerador de Portfólio Cultural | Sobrinho Soluções Digitais</title>
+<style>
+:root{
+  --bg:#f5f3ee;--card:#fff;--ink:#20221f;--muted:#696d67;--accent:#7b2f35;--accent2:#b48a4a;--line:#ded8cf;--ok:#276749;
+}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#171a18;color:#fff;padding:18px 20px;border-bottom:4px solid var(--accent2)}
+.brand{max-width:1320px;margin:auto;display:flex;justify-content:space-between;gap:16px;align-items:center}.brand h1{font-size:18px;margin:0}.brand small{color:#c9cec9}
+main{max-width:1320px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:minmax(320px,480px) 1fr;gap:22px}
+.panel,.preview-shell{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 26px rgba(0,0,0,.06)}
+.panel{padding:18px;position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto}.preview-shell{padding:18px}
+.hero-note{padding:12px 14px;background:#f7efe7;border:1px solid #ead7c0;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.45}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}.tab{border:1px solid var(--line);background:#fff;padding:8px 10px;border-radius:999px;cursor:pointer;font-size:12px}.tab.active{background:#20231f;color:#fff;border-color:#20231f}
+.section{display:none}.section.active{display:block}.section h2{font-size:16px;margin:6px 0 14px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{margin-bottom:11px}.field label{display:block;font-size:12px;font-weight:700;margin:0 0 5px}.field small{color:var(--muted)}
+input,textarea,select{width:100%;padding:10px 11px;border:1px solid #cfc9bf;border-radius:10px;background:#fff;font:inherit;color:inherit}textarea{min-height:90px;resize:vertical}
+button{font:inherit}.btn{border:0;border-radius:10px;padding:10px 13px;cursor:pointer;font-weight:700}.primary{background:var(--accent);color:#fff}.secondary{background:#ece8df;color:#252825}.ghost{background:transparent;border:1px solid var(--line)}.danger{color:#9b2c2c}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.item{border:1px solid var(--line);border-radius:12px;padding:10px;margin:9px 0;background:#fcfbf8}.item-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.item h4{font-size:13px;margin:0}.mini{font-size:11px;padding:6px 8px}
+.score{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.score div{border:1px solid var(--line);border-radius:10px;padding:9px;font-size:12px}.score b{display:block;margin-bottom:2px}.ok{color:var(--ok)}
+.portfolio{max-width:850px;margin:auto;background:#fff;color:#1d201d;border:1px solid #e6e0d8;min-height:1100px}.cover{padding:58px 58px 48px;background:linear-gradient(135deg,#20231f,#343831);color:#fff;position:relative;overflow:hidden}.cover:after{content:"";position:absolute;width:260px;height:260px;border:42px solid rgba(180,138,74,.18);border-radius:50%;right:-90px;top:-80px}.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#d9bd8d}.cover h1{font-size:42px;line-height:1.05;margin:14px 0 8px;max-width:650px}.cover p{max-width:620px;color:#e6e8e4;margin:0}.meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;font-size:12px;color:#d9ded9}
+.doc{padding:42px 58px}.doc h2{font-size:21px;border-bottom:2px solid #b48a4a;padding-bottom:8px;margin:32px 0 16px}.doc h2:first-child{margin-top:0}.doc p{line-height:1.65}.identity{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}.avatar{width:120px;height:120px;border-radius:14px;background:#eee center/cover no-repeat;border:1px solid #ddd}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{font-size:11px;padding:6px 8px;border-radius:999px;background:#f1ede5;border:1px solid #e1dacd}
+.timeline{border-left:2px solid #c3a26c;margin-left:7px;padding-left:18px}.event{margin:0 0 18px;position:relative}.event:before{content:"";width:10px;height:10px;border-radius:50%;background:#7b2f35;position:absolute;left:-24px;top:6px}.event b{display:block}.event small{color:#6f736c}.project-card{border:1px solid #ded8cf;border-radius:12px;padding:14px;margin:11px 0}.project-card h3{margin:0 0 6px;font-size:17px}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid #ddd}.proofs li{margin:7px 0;line-height:1.4}.footer-note{padding:16px 58px 28px;color:#777;font-size:10px;border-top:1px solid #eee}
+.empty{color:#90948d;font-style:italic}.badge{display:inline-block;font-size:10px;padding:4px 7px;border-radius:999px;background:#fff3d8;color:#694b12;border:1px solid #edd6a2;margin-left:6px}
+@media(max-width:980px){main{grid-template-columns:1fr}.panel{position:static;max-height:none}.cover,.doc{padding-left:26px;padding-right:26px}.cover h1{font-size:34px}}
+@media print{body{background:#fff}.no-print,header,.panel{display:none!important}main{display:block;max-width:none;margin:0;padding:0}.preview-shell{border:0;box-shadow:none;padding:0}.portfolio{border:0;max-width:none}.cover{break-after:page;min-height:100vh;display:flex;flex-direction:column;justify-content:center}.project-card,.event,.gallery img{break-inside:avoid}.footer-note{display:none}}
+</style>
+</head>
+<body>
+<header class="no-print"><div class="brand"><div><h1>Sobrinho Soluções Digitais</h1><small>Gerador de Portfólio Cultural</small></div><small>Modelo 01 • PNAB Três Lagoas/MS</small></div></header>
+<main>
+  <aside class="panel no-print">
+    <div class="hero-note"><b>Modelo orientado à PNAB de Três Lagoas.</b><br>Organiza currículo, trajetória e comprovações culturais. Não é um formulário oficial da Prefeitura e não substitui a leitura do edital vigente.</div>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="dados">Dados</button><button class="tab" data-tab="trajetoria">Trajetória</button><button class="tab" data-tab="projetos">Projetos</button><button class="tab" data-tab="provas">Comprovações</button><button class="tab" data-tab="galeria">Galeria</button><button class="tab" data-tab="revisao">Revisão</button>
+    </div>
+
+    <section class="section active" id="dados">
+      <h2>Identificação do agente cultural</h2>
+      <div class="field"><label>Nome artístico / nome do grupo</label><input id="nome" placeholder="Ex.: Maria da Silva / Coletivo Raízes" /></div>
+      <div class="grid2"><div class="field"><label>Nome civil / razão social</label><input id="civil" /></div><div class="field"><label>Cidade/UF</label><input id="cidade" value="Três Lagoas/MS" /></div></div>
+      <div class="grid2"><div class="field"><label>Área cultural</label><input id="area" placeholder="Música, dança, artesanato..." /></div><div class="field"><label>Ano de início da atuação</label><input id="inicio" type="number" min="1900" max="2100" /></div></div>
+      <div class="field"><label>Apresentação curta</label><textarea id="bio" placeholder="Quem é você, o que produz e qual sua relação com a cultura local."></textarea></div>
+      <div class="field"><label>Atuação em Três Lagoas</label><textarea id="atuacao" placeholder="Descreva sua atuação cultural no município, territórios, comunidades e públicos alcançados."></textarea></div>
+      <div class="grid2"><div class="field"><label>Telefone</label><input id="telefone" /></div><div class="field"><label>E-mail</label><input id="email" type="email" /></div></div>
+      <div class="field"><label>Instagram / site / rede principal</label><input id="rede" placeholder="https://..." /></div>
+      <div class="field"><label>Foto de perfil</label><input id="avatarInput" type="file" accept="image/*" /></div>
+    </section>
+
+    <section class="section" id="trajetoria">
+      <h2>Linha do tempo cultural</h2><div id="timelineEditor"></div>
+      <button class="btn secondary" id="addTimeline">+ Adicionar marco</button>
+      <div class="field" style="margin-top:14px"><label>Resumo da trajetória</label><textarea id="resumoTrajetoria" placeholder="Síntese dos principais momentos, reconhecimentos, formações e contribuições culturais."></textarea></div>
+    </section>
+
+    <section class="section" id="projetos">
+      <h2>Projetos e trabalhos realizados</h2><div id="projectsEditor"></div>
+      <button class="btn secondary" id="addProject">+ Adicionar projeto</button>
+    </section>
+
+    <section class="section" id="provas">
+      <h2>Comprovações da trajetória</h2>
+      <p style="font-size:12px;color:var(--muted)">Inclua links de matérias, posts, vídeos, certificados, cartazes, matérias de imprensa, premiações ou outros registros verificáveis.</p>
+      <div id="proofsEditor"></div><button class="btn secondary" id="addProof">+ Adicionar comprovação</button>
+    </section>
+
+    <section class="section" id="galeria">
+      <h2>Galeria</h2>
+      <div class="field"><label>Adicionar fotos <span class="badge">até 9</span></label><input id="galleryInput" type="file" accept="image/*" multiple /></div>
+      <p style="font-size:12px;color:var(--muted)">As imagens são comprimidas no navegador para caber no arquivo salvo localmente.</p><div id="galleryEditor"></div>
+    </section>
+
+    <section class="section" id="revisao">
+      <h2>Checklist PNAB / portfólio</h2>
+      <div class="score" id="score"></div>
+      <div class="actions"><button class="btn primary" onclick="window.print()">Gerar PDF / Imprimir</button><button class="btn secondary" id="exportHtml">Baixar portfólio HTML</button><button class="btn ghost" id="saveJson">Backup dos dados</button><button class="btn ghost" id="loadJsonBtn">Restaurar backup</button><input id="loadJson" type="file" accept="application/json" hidden /></div>
+      <button class="btn ghost danger" id="clearAll" style="margin-top:10px">Limpar tudo</button>
+    </section>
+  </aside>
+
+  <section class="preview-shell">
+    <article class="portfolio" id="portfolio">
+      <section class="cover"><div class="kicker">Portfólio Cultural • Três Lagoas/MS</div><h1 id="vNome">Seu nome artístico</h1><p id="vBio">Apresente aqui sua identidade cultural, linguagem artística e atuação.</p><div class="meta"><span id="vArea">Área cultural</span><span id="vCidade">Três Lagoas/MS</span><span id="vContato">Contato</span></div></section>
+      <div class="doc">
+        <section class="identity"><div class="avatar" id="vAvatar"></div><div><h2 style="margin-top:0">Perfil cultural</h2><p id="vCivil" class="empty">Nome civil / razão social</p><div class="chips" id="vChips"></div><p id="vAtuacao" class="empty">Descreva sua atuação cultural em Três Lagoas.</p></div></section>
+        <section><h2>Trajetória artística e cultural</h2><p id="vResumoTrajetoria" class="empty">Inclua um resumo da sua trajetória.</p><div class="timeline" id="vTimeline"></div></section>
+        <section><h2>Projetos e realizações</h2><div id="vProjects"></div></section>
+        <section><h2>Comprovações</h2><ol class="proofs" id="vProofs"></ol></section>
+        <section><h2>Galeria</h2><div class="gallery" id="vGallery"></div></section>
+        <section><h2>Contato</h2><p id="vContacts"></p></section>
+      </div>
+      <div class="footer-note">Portfólio gerado com o Gerador de Portfólio Cultural da Sobrinho Soluções Digitais. Modelo de apoio à organização documental; não é documento oficial da PNAB.</div>
+    </article>
+  </section>
+</main>
+<script>
+const $=id=>document.getElementById(id); const KEY='ssd_portfolio_cultural_v1';
+let state={timeline:[],projects:[],proofs:[],gallery:[],avatar:''};
+const fields=['nome','civil','cidade','area','inicio','bio','atuacao','telefone','email','rede','resumoTrajetoria'];
+function esc(s=''){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function linkify(url){if(!url)return ''; const safe=esc(url); return /^https?:\/\//i.test(url)?`<a href="${safe}" target="_blank" rel="noopener">${safe}</a>`:safe}
+function save(){fields.forEach(f=>state[f]=$(f)?.value||''); try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){} render()}
+function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null'); if(x)state={...state,...x}}catch(e){} fields.forEach(f=>{if($(f)&&state[f]!=null)$(f).value=state[f]}); renderEditors();render()}
+function years(){const n=parseInt(state.inicio); return n?new Date().getFullYear()-n:null}
+function render(){fields.forEach(f=>{if($(f))state[f]=$(f).value||''});
+ $('vNome').textContent=state.nome||'Seu nome artístico'; $('vBio').textContent=state.bio||'Apresente aqui sua identidade cultural, linguagem artística e atuação.'; $('vArea').textContent=state.area||'Área cultural'; $('vCidade').textContent=state.cidade||'Três Lagoas/MS'; $('vContato').textContent=state.telefone||state.email||'Contato';
+ $('vCivil').textContent=state.civil||'Nome civil / razão social'; $('vCivil').className=state.civil?'':'empty'; $('vAtuacao').textContent=state.atuacao||'Descreva sua atuação cultural em Três Lagoas.'; $('vAtuacao').className=state.atuacao?'':'empty'; $('vResumoTrajetoria').textContent=state.resumoTrajetoria||'Inclua um resumo da sua trajetória.'; $('vResumoTrajetoria').className=state.resumoTrajetoria?'':'empty'; $('vAvatar').style.backgroundImage=state.avatar?`url(${state.avatar})`:'';
+ const y=years(); $('vChips').innerHTML=[state.area,state.inicio?`Atuação desde ${state.inicio}`:'',y!=null?`${y} ano${y===1?'':'s'} de trajetória`:'' ].filter(Boolean).map(x=>`<span class="chip">${esc(x)}</span>`).join('');
+ $('vTimeline').innerHTML=state.timeline.length?state.timeline.map(x=>`<div class="event"><b>${esc(x.titulo||'Marco cultural')}</b><small>${esc(x.ano||'')}</small><p>${esc(x.descricao||'')}</p></div>`).join(''):'<p class="empty">Adicione marcos da sua trajetória.</p>';
+ $('vProjects').innerHTML=state.projects.length?state.projects.map(x=>`<div class="project-card"><h3>${esc(x.titulo||'Projeto cultural')}</h3><div class="chips">${x.ano?`<span class="chip">${esc(x.ano)}</span>`:''}${x.funcao?`<span class="chip">${esc(x.funcao)}</span>`:''}</div><p>${esc(x.descricao||'')}</p>${x.link?`<p><b>Registro:</b> ${linkify(x.link)}</p>`:''}</div>`).join(''):'<p class="empty">Adicione seus principais projetos, apresentações, exposições, oficinas ou produções.</p>';
+ $('vProofs').innerHTML=state.proofs.length?state.proofs.map(x=>`<li><b>${esc(x.titulo||'Comprovação')}</b>${x.ano?' — '+esc(x.ano):''}${x.link?'<br>'+linkify(x.link):''}</li>`).join(''):'<li class="empty">Inclua registros que comprovem sua atuação cultural.</li>';
+ $('vGallery').innerHTML=state.gallery.length?state.gallery.map(x=>`<img src="${x}" alt="Registro cultural"/>`).join(''):'<p class="empty">Adicione fotos de atividades culturais.</p>';
+ $('vContacts').innerHTML=[state.telefone,state.email,state.rede].filter(Boolean).map(esc).join(' • ')||'<span class="empty">Adicione seus contatos.</span>';
+ renderScore();
+}
+function renderEditors(){
+ $('timelineEditor').innerHTML=state.timeline.map((x,i)=>`<div class="item"><div class="item-top"><h4>Marco ${i+1}</h4><button class="btn ghost mini danger" onclick="delTimeline(${i})">remover</button></div><div class="grid2"><input placeholder="Ano" value="${esc(x.ano||'')}" oninput="updTimeline(${i},'ano',this.value)"><input placeholder="Título" value="${esc(x.titulo||'')}" oninput="updTimeline(${i},'titulo',this.value)"></div><textarea placeholder="O que aconteceu e por que foi relevante" oninput="updTimeline(${i},'descricao',this.value)">${esc(x.descricao||'')}</textarea></div>`).join('');
+ $('projectsEditor').innerHTML=state.projects.map((x,i)=>`<div class="item"><div class="item-top"><h4>Projeto ${i+1}</h4><button class="btn ghost mini danger" onclick="delProject(${i})">remover</button></div><input placeholder="Nome do projeto / ação" value="${esc(x.titulo||'')}" oninput="updProject(${i},'titulo',this.value)"><div class="grid2"><input placeholder="Ano/período" value="${esc(x.ano||'')}" oninput="updProject(${i},'ano',this.value)"><input placeholder="Sua função" value="${esc(x.funcao||'')}" oninput="updProject(${i},'funcao',this.value)"></div><textarea placeholder="Descrição, público, local, resultados" oninput="updProject(${i},'descricao',this.value)">${esc(x.descricao||'')}</textarea><input placeholder="Link de registro (opcional)" value="${esc(x.link||'')}" oninput="updProject(${i},'link',this.value)"></div>`).join('');
+ $('proofsEditor').innerHTML=state.proofs.map((x,i)=>`<div class="item"><div class="item-top"><h4>Comprovação ${i+1}</h4><button class="btn ghost mini danger" onclick="delProof(${i})">remover</button></div><div class="grid2"><input placeholder="Descrição" value="${esc(x.titulo||'')}" oninput="updProof(${i},'titulo',this.value)"><input placeholder="Ano" value="${esc(x.ano||'')}" oninput="updProof(${i},'ano',this.value)"></div><input placeholder="Link público (matéria, vídeo, post, pasta...)" value="${esc(x.link||'')}" oninput="updProof(${i},'link',this.value)"></div>`).join('');
+ $('galleryEditor').innerHTML=state.gallery.map((x,i)=>`<div class="item item-top"><img src="${x}" style="width:72px;height:54px;object-fit:cover;border-radius:6px"><button class="btn ghost mini danger" onclick="delGallery(${i})">remover</button></div>`).join('');
+}
+window.updTimeline=(i,k,v)=>{state.timeline[i][k]=v;save()};window.delTimeline=i=>{state.timeline.splice(i,1);renderEditors();save()};window.updProject=(i,k,v)=>{state.projects[i][k]=v;save()};window.delProject=i=>{state.projects.splice(i,1);renderEditors();save()};window.updProof=(i,k,v)=>{state.proofs[i][k]=v;save()};window.delProof=i=>{state.proofs.splice(i,1);renderEditors();save()};window.delGallery=i=>{state.gallery.splice(i,1);renderEditors();save()};
+function renderScore(){const checks=[['Identificação',!!state.nome],['Área cultural',!!state.area],['Atuação local',state.atuacao.length>80],['Resumo da trajetória',state.resumoTrajetoria.length>120],['Linha do tempo',state.timeline.length>=3],['Projetos realizados',state.projects.length>=2],['Comprovações',state.proofs.length>=2],['Galeria',state.gallery.length>=3],['Contato',!!(state.telefone||state.email)],['2+ anos de atuação',years()!=null&&years()>=2]];$('score').innerHTML=checks.map(([n,ok])=>`<div><b class="${ok?'ok':''}">${ok?'✓':'○'} ${n}</b><span>${ok?'preenchido':'revisar'}</span></div>`).join('')}
+async function compress(file){return new Promise((res,rej)=>{const img=new Image(),r=new FileReader();r.onload=e=>{img.onload=()=>{const max=1400,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.78))};img.onerror=rej;img.src=e.target.result};r.readAsDataURL(file)})}
+$('avatarInput').addEventListener('change',async e=>{if(e.target.files[0]){state.avatar=await compress(e.target.files[0]);save()}});$('galleryInput').addEventListener('change',async e=>{for(const f of [...e.target.files].slice(0,9-state.gallery.length)){state.gallery.push(await compress(f))}renderEditors();save()});
+fields.forEach(f=>$(f).addEventListener('input',save));$('addTimeline').onclick=()=>{state.timeline.push({ano:'',titulo:'',descricao:''});renderEditors();save()};$('addProject').onclick=()=>{state.projects.push({titulo:'',ano:'',funcao:'',descricao:'',link:''});renderEditors();save()};$('addProof').onclick=()=>{state.proofs.push({titulo:'',ano:'',link:''});renderEditors();save()};
+[...document.querySelectorAll('.tab')].forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab,.section').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')});
+$('exportHtml').onclick=()=>{const clone=$('portfolio').cloneNode(true);const css=[...document.querySelectorAll('style')].map(s=>s.textContent).join('\n');const html=`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(state.nome||'Portfólio Cultural')}</title><style>${css}</style></head><body style="background:#fff"><main style="display:block;max-width:900px;margin:20px auto"><section class="preview-shell">${clone.outerHTML}</section></main></body></html>`;download(new Blob([html],{type:'text/html'}),(state.nome||'portfolio-cultural').replace(/[^a-z0-9]+/gi,'-').toLowerCase()+'.html')};
+$('saveJson').onclick=()=>download(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),'backup-portfolio-cultural.json');$('loadJsonBtn').onclick=()=>$('loadJson').click();$('loadJson').onchange=e=>{const r=new FileReader();r.onload=()=>{try{state={...state,...JSON.parse(r.result)};fields.forEach(f=>{if($(f))$(f).value=state[f]||''});renderEditors();save()}catch{alert('Backup inválido.')}};if(e.target.files[0])r.readAsText(e.target.files[0])};$('clearAll').onclick=()=>{if(confirm('Apagar todos os dados salvos neste navegador?')){localStorage.removeItem(KEY);location.reload()}};
+function download(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+load();
+</script>
+</body></html>
